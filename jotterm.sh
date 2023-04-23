@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Set up the config and themes directories
 config_file="$HOME/.config/jotterm/config"
@@ -25,7 +25,11 @@ mkdir -p "$notes_dir"
 # Function to list notes
 list_notes() {
   echo -e "${CYAN}Your notes:${RESET}"
-  ls -1 "$notes_dir"
+  for note in "$notes_dir"/*; do
+    echo -e "${YELLOW}$(basename "$note")${RESET}"
+    echo -e "$(cat "$note")"
+    echo -e "------------------"
+  done
 }
 
 display_help() {
@@ -63,7 +67,7 @@ while true; do
         note_file="$notes_dir/${timestamp}.txt"
       fi
 
-      echo -e "${YELLOW}Enter your note (Press Enter followed by Ctrl+D to save):${RESET}"
+      echo -e "${YELLOW}Enter your note (Press Ctrl+D to save):${RESET}"
       cat > "$note_file"
 
       if [[ -n "$note_title" ]]; then
@@ -82,36 +86,35 @@ while true; do
       read -e edit_title
       edit_file="$notes_dir/${edit_title}.txt"
       if [[ -f "$edit_file" ]]; then
-        echo -e "${YELLOW}Enter your updated note (Press Enter followed by Ctrl+D to save):${RESET}"
-        cat > "$edit_file"
-        echo -e "${GREEN}Note updated.${RESET}"
-      else
-                echo -e "${RED}Note not found.${RESET}"
-      fi
-      ;;
-    d)
-      echo -en "${YELLOW}Enter the title of the note you want to delete:${RESET} "
-      read -e delete_title
-      delete_file="$notes_dir/${delete_title}.txt"
-      if [[ -f "$delete_file" ]]; then
-        rm "$delete_file"
-        echo -e "${RED}Note deleted.${RESET}"
-      else
-        echo -e "${RED}Note not found.${RESET}"
-      fi
-      ;;
-    q)
-      echo -e "${YELLOW}Goodbye!${RESET}"
-      exit 0
-      ;;
-    ?)
-      ;;
-    *)
-      echo -e "${RED}Invalid command.${RESET}"
-      ;;
-  esac
-  echo -e "${YELLOW}Press Enter to continue...${RESET}"
-  read
+        ${EDITOR:-vi} "$
+        ${edit_file}"
+echo -e "${GREEN}Note updated.${RESET}"
+else
+echo -e "${RED}Note not found.${RESET}"
+fi
+;;
+d)
+echo -en "${YELLOW}Enter the title of the note you want to delete:${RESET} "
+read -e delete_title
+delete_file="$notes_dir/${delete_title}.txt"
+if [[ -f "$delete_file" ]]; then
+rm "$delete_file"
+echo -e "${RED}Note deleted.${RESET}"
+else
+echo -e "${RED}Note not found.${RESET}"
+fi
+;;
+q)
+echo -e "${YELLOW}Goodbye!${RESET}"
+exit 0
+;;
+?)
+;;
+*)
+echo -e "${RED}Invalid command.${RESET}"
+;;
+esac
+echo -e "${YELLOW}Press Enter to continue...${RESET}"
+read
 done
-
 
