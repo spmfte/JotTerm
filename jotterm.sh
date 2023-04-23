@@ -30,7 +30,7 @@ list_notes() {
 
 display_help() {
   echo -e "${YELLOW}Commands:${RESET}"
-  echo -e "  ${GREEN}n${RESET} ${CYAN}- Create a new note${RESET}"
+  echo -e "  ${GREEN}n${RESET} ${CYAN}- Create new note${RESET}"
   echo -e "  ${GREEN}l${RESET} ${CYAN}- List notes${RESET}"
   echo -e "  ${GREEN}e${RESET} ${CYAN}- Edit note${RESET}"
   echo -e "  ${GREEN}d${RESET} ${CYAN}- Delete a note${RESET}"
