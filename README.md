@@ -35,7 +35,7 @@ JotTerm is a lightweight terminal-based notes app built for users who need to qu
 1. Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/JotTerm.git
+git clone https://github.com/spmfte/JotTerm.git
 ```
 
 2. Change to the JotTerm directory:
