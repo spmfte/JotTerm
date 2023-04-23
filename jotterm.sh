@@ -31,16 +31,15 @@ list_notes() {
 display_help() {
   echo -e "${YELLOW}Commands:${RESET}"
   echo -e "  ${GREEN}n${RESET} ${CYAN}- Create a new note${RESET}"
-  echo -e "  ${GREEN}l${RESET} ${CYAN}- List all notes${RESET}"
-  echo -e "  ${GREEN}e${RESET} ${CYAN}- Edit an existing note${RESET}"
+  echo -e "  ${GREEN}l${RESET} ${CYAN}- List notes${RESET}"
+  echo -e "  ${GREEN}e${RESET} ${CYAN}- Edit note${RESET}"
   echo -e "  ${GREEN}d${RESET} ${CYAN}- Delete a note${RESET}"
   echo -e "  ${GREEN}q${RESET} ${CYAN}- Quit${RESET}"
-  echo -e "  ${GREEN}?${RESET} ${CYAN}- Show this help menu${RESET}"
+  echo -e "  ${GREEN}?${RESET} ${CYAN}- Show help menu${RESET}"
 }
-
 display_dashboard() {
   clear
-  echo -e "${MAGENTA}$(toilet -f future -F border -W "JotTerm")${RESET}"
+  echo -e "${MAGENTA}$(toilet -f future -F border -t "JotTerm")${RESET}"
   echo ""
   display_help
 }
