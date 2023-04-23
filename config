@@ -1,0 +1,6 @@
+# Default theme
+THEME=default
+
+# Directory to store notes
+NOTES_DIR=$HOME/notes
+
